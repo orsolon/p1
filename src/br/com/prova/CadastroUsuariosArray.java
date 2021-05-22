@@ -5,6 +5,10 @@ public class CadastroUsuariosArray implements CadastroUsuarios{
     private Usuario[] usuarios;
     private int qtdUsuarios = 0;
 
+    public int getQtdUsuarios() {
+        return qtdUsuarios;
+    }
+
     public CadastroUsuariosArray() {
         this.usuarios = new Usuario[10];
     }
@@ -19,10 +23,13 @@ public class CadastroUsuariosArray implements CadastroUsuarios{
         }
     }
 
-    public void remover(int indice) {
-        if (indice >=0 && indice < this.qtdUsuarios){
-            this.usuarios[indice] = null;
-            this.qtdUsuarios--;
+    public void remover(String nome) {
+        for (int i=0; i< this.qtdUsuarios; i++){
+            Usuario usuario = this.usuarios[i];
+            if (usuario.getNome().equalsIgnoreCase(nome)){
+                this.usuarios[i] = null;
+                this.qtdUsuarios--;
+            }
         }
     }
 
@@ -38,10 +45,10 @@ public class CadastroUsuariosArray implements CadastroUsuarios{
 
     @Override
     public void listarTodos(Usuario usuario) {
-        for (Usuario u : this.usuarios) {
-            System.out.println(u);
+        for (Usuario user : this.usuarios) {
+            System.out.println(user);
 
+        }
     }
-
 
 }
